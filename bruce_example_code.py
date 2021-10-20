@@ -24,5 +24,12 @@ print(f"\nValue Counts for 'rcode':\n{vc}")
 vc.plot.pie(figsize=(10,10))
 plt.show()
 
+# Question 3. How many different, unique clients access the service.
+# Verified using
+#   tail -n +2 < nasa_access_log_500k.csv | awk -F, { print } | sort -u | wc -l
+print('\nQuestion 3: Unique clients')
+uniq = df['clientloc'].nunique()
+print(f"\nSite recived {uniq} visitors\n")
+
 print("Done")
 
