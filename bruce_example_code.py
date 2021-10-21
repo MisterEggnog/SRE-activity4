@@ -31,7 +31,9 @@ print('\nQuestion 3: Unique clients')
 uniq = df['clientloc'].nunique()
 print(f"\nSite recieved {uniq} visitors\n")
 
-print('\nQuestion 4: Most common unique visitor')
+print('\nQuestion 4: Which Client Accessed The Most')
+mostCommonClient = df['clientloc'].value_counts()
+print(f"\nThe most common client was {mostCommonClient.index[0]}, they connected {mostCommonClient[0]} times\n")
 
 print("Done")
 
