@@ -26,10 +26,12 @@ plt.show()
 
 # Question 3. How many different, unique clients access the service.
 # Verified using
-#   tail -n +2 < nasa_access_log_500k.csv | awk -F, { print } | sort -u | wc -l
+#   tail -n +2 < nasa_access_log_500k.csv | awk -F, '{ print $2 }' | sort -u | wc -l
 print('\nQuestion 3: Unique clients')
 uniq = df['clientloc'].nunique()
-print(f"\nSite recived {uniq} visitors\n")
+print(f"\nSite recieved {uniq} visitors\n")
+
+print('\nQuestion 4: Most common unique visitor')
 
 print("Done")
 
