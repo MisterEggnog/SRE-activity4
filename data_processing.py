@@ -32,8 +32,24 @@ uniq = df['clientloc'].nunique()
 print(f"\nSite recieved {uniq} visitors\n")
 
 print('\nQuestion 4: Which Client Accessed The Most')
-mostCommonClient = df['clientloc'].value_counts()
+def mostCommonElem(frame, axis):
+    return frame[axis].value_counts()
+mostCommonClient = mostCommonElem(df, 'clientloc')
 print(f"\nThe most common client was {mostCommonClient.index[0]}, they connected {mostCommonClient[0]} times\n")
+
+print('\nQuestion 5: For the 5 clients with the most requests, show a bar chart of how many times each client accessed the service.')
+mostCommonClientBar = mostCommonClient.iloc[0:5]
+mostCommonClientBar.plot.bar(figsize=[10,10])
+plt.show()
+print(f"\n{mostCommonClientBar}")
+
+print('\nQuestion 6: Which resource (which path) was accessed the most?')
+mostCommonResource = mostCommonElem(df, 'path')
+print(f'\nMost commonly accessed resource was {mostCommonResource.index[0]}')
+
+print('\nQuestion 7: The first element in the path indicates a resource class. List all of the accessed resource classes.')
+mostCommonResourceClass = df['path'].map(lambda a : a.split('/')[1]).value_counts()
+print(f'\n{mostCommonResourceClass.index.tolist()}\n')
 
 print("Done")
 
